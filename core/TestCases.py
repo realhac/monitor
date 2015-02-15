@@ -13,11 +13,5 @@ class Test_Cases:
     def tearDown(self):
         print "teardown"
 
-    def main(self):
-        self.setUp()
-        self.testRun()
-        self.tearDown()
-
 if __name__ == "__main__":
-    tc = Test_Cases()
-    tc.main()
+    pass
