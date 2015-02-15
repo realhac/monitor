@@ -6,6 +6,7 @@ import json
 class Request_Response:
 	def __init__(self):
 		self._url = ''
+		self._data = ''
 
 	
 
