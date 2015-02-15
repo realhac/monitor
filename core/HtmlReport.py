@@ -6,7 +6,7 @@ class HTML_Test_Report:
     def __init__(self, tr_name):
         self._html = open(tr_name, 'w')
 
-    def write_tag(self, tag, begin, para=[]):
+    def writeTag(self, tag, begin, para=[]):
         if begin:
             if para:
                 for pa in para:
@@ -16,19 +16,19 @@ class HTML_Test_Report:
         else:
             self._html.write("<" + tag + "/>")
 
-    def tr_finish(self):
+    def trFinish(self):
         self._html.close()
 
 if __name__ == "__main__":
     tr = HTML_Test_Report("test.html")
 
-    tr.write_tag("html", True)
-    tr.write_tag("head", True)
-    tr.write_tag("title", True)
-    tr.write_tag("title", False)
-    tr.write_tag("head", False)
-    tr.write_tag("body", True)
-    tr.write_tag("body", False)
-    tr.write_tag("html", False)
+    tr.writeTag("html", True)
+    tr.writeTag("head", True)
+    tr.writeTag("title", True)
+    tr.writeTag("title", False)
+    tr.writeTag("head", False)
+    tr.writeTag("body", True)
+    tr.writeTag("body", False)
+    tr.writeTag("html", False)
 
-    tr.tr_finish()
+    tr.trFinish()
