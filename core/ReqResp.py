@@ -15,7 +15,7 @@ class Request_Response:
 
 if __name__ == "__main__":
     u = 'http://ware.m.jd.com/client.action?functionId=skuDyInfo&clientVersion=4.0.0&client=android&osVersion=4.0.3&screen=960*540&networkType=wifi&pin=ljzh347'
-    d = 'body={"skuId":"1457441393"}'
+    d = 'body={"skuId":"782200"}'
     h = {"Content-Type": "application/x-www-form-urlencoded"}
     rr = Request_Response(u, d, h)
     r = rr.postResponse()
