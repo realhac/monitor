@@ -27,6 +27,15 @@ class Request_Response_Curl:
         crl.setopt(crl.POSTFIELDS,  self._data)
         crl.setopt(pycurl.URL, self._url)
         crl.setopt(crl.WRITEFUNCTION, crl.fp.write)
+
+        # Option -b/--cookie <name=string/file> Cookie string or file to read cookies from
+        # Note: must be a string, not a file object.
+        crl.setopt(pycurl.COOKIEFILE, "cookie_file_name")
+
+        # Option -c/--cookie-jar <file> Write cookies to this file after operation
+        # Note: must be a string, not a file object.
+        crl.setopt(pycurl.COOKIEJAR, "cookie_file_name")
+
         crl.perform()
 
         r = crl.fp.getvalue().decode('utf-8')
