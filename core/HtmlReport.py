@@ -19,10 +19,22 @@ class HTML_Test_Report:
     def trFinish(self):
         self._html.close()
 
+    def writeTableCss(self):
+        fp = open("../css/table.css", "rb")
+        fc = fp.read();
+        self._html.write(fc)
+        fp.close()
+
+    def writeTableHead(self):
+        self.writeTag()
+
 if __name__ == "__main__":
     tr = HTML_Test_Report("test.html")
 
     tr.writeTag("html", True)
+
+    tr.writeTableCss()
+
     tr.writeTag("head", True)
     tr.writeTag("title", True)
     tr.writeTag("title", False)
