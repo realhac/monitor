@@ -32,10 +32,12 @@ class HTML_Test_Report:
 
     def drawTableHead(self):
         self.writeTag("div", True, ['id="header_div"'])
-        self.drawTableCell("状态码", "header_div_wd100")
-        self.drawTableCell("失败信息", "header_div_wd250")
-        self.drawTableCell("线上详情", "header_div_wd300")
-        self.drawTableCell("预发布详情", "header_div_wd300")
+        self.drawTableCell("测试用例", "header_div_wd150")
+        self.drawTableCell("状态码", "header_div_wd80")
+        self.drawTableCell("返回值", "header_div_wd300")
+        self.drawTableCell("请求URL", "header_div_wd250")
+        self.drawTableCell("请求参数", "header_div_wd250")
+        self.drawTableCell("操作", "header_div_wd80")
         self.writeTag("div", False)
 
     def drawTableCell(self, cell_name, id):
@@ -50,39 +52,40 @@ class HTML_Test_Report:
     def drawTableRows(self):
         self.writeTag("div", True, ['id="rows_div"'])
 
-        self.drawTableRow(["11111111111111111111","11111111111","111111111111111111111111","111"])
-        self.drawTableRow(["22222","222222222222222222222222222222222222222222","2222222222222222","2222"])
-        self.drawTableRow(["333333333333333333333","22222222222222222222222222","2222222222222222","2222"])
+        #self.drawTableRow(["11111111111111111111","11111111111","111111111111111111111111","111"])
+        #self.drawTableRow(["22222","222222222222222222222222222222222222222222","2222222222222222","2222"])
+        #self.drawTableRow(["333333333333333333333","22222222222222222222222222","2222222222222222","2222"])
+        self.drawTableCompareRow(["11111111111111111111","11111111111","111111111111111111111111","111"], ["333333333333333333333","22222222222222222222222222","2222222222222222","2222"])
+        self.drawTableCompareRow(["333333333333333333333","22222222222222222222222222","2222222222222222","2222"], ["333333333333333333333","22222222222222222222222222","2222222222222222","2222"])
 
+        self.writeTag("div", False)
+
+    def drawTableCompareRow(self, info1, info2):
+        self.writeTag("div", True, ['id="row_div"'])
+        self.drawTableCell(info1[0], "row_div_wd150")
+        self.drawTableCell(info1[0], "row_div_wd80")
+        self.drawTableCell(info1[0], "row_div_wd300")
+        self.drawTableCell(info1[1], "row_div_wd250")
+        self.drawTableCell(info1[2], "row_div_wd250")
+        self.drawTableCell(info1[3], "row_div_wd80")
+        self.drawClear()
+        self.drawTableCell(info2[0], "row_div_wd150")
+        self.drawTableCell(info2[0], "row_div_wd80")
+        self.drawTableCell(info2[0], "row_div_wd300")
+        self.drawTableCell(info2[1], "row_div_wd250")
+        self.drawTableCell(info2[2], "row_div_wd250")
+        self.drawTableCell(info2[3], "row_div_wd80")
+        self.drawClear()
         self.writeTag("div", False)
 
     def drawTableRow(self, info):
         self.writeTag("div", True, ['id="row_div"'])
-
-        self.writeTag("div", True, ['id="row_div_wd100"'])
-        self.drawTableCell(info[0], "row_div_wd96")
-        self.drawTableCell(info[0], "row_div_wd96")
-        self.writeTag("div", False)
-
+        self.drawTableCell(info[0], "row_div_wd150")
+        self.drawTableCell(info[0], "row_div_wd80")
+        self.drawTableCell(info[0], "row_div_wd300")
         self.drawTableCell(info[1], "row_div_wd250")
-
-        self.writeTag("div", True, ['id="row_div_wd604"'])
-        self.drawTableCell(info[2], "row_div_wd300")
-        self.drawTableCell(info[2], "row_div_wd300")
-        self.drawClear()
-        self.drawTableCell(info[3], "row_div_wd300")
-        self.drawTableCell(info[3], "row_div_wd300")
-        self.drawClear()
-        self.drawTableCell(info[3], "row_div_wd300")
-        self.drawTableCell(info[3], "row_div_wd300")
-        self.drawClear()
-        self.writeTag("div", False)
-
-
-        #self.drawTableCell(info[0], "row_div_wd100")
-        #self.drawTableCell(info[1], "row_div_wd250")
-        #self.drawTableCell(info[2], "row_div_wd300")
-        #self.drawTableCell(info[3], "row_div_wd300")
+        self.drawTableCell(info[2], "row_div_wd250")
+        self.drawTableCell(info[3], "row_div_wd80")
         self.drawClear()
         self.writeTag("div", False)
 
