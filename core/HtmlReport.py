@@ -93,27 +93,52 @@ class HTML_Test_Report:
         self.writeTag("div", True, ['id="main_div"'])
      
         self.drawTableHead()
+        self.drawTableCompareRow()
+
+        self.writeTag("div", False)
+
+    def drawCompareTable(self):
+        self.writeTag("div", True, ['id="main_div"'])
+     
+        self.drawTableHead()
         self.drawTableRows()
 
         self.writeTag("div", False)
 
+    def drawReport(self):
+        tr.writeTag("html", True)
+        tr.writeTag("head", True)
+        tr.writeCharset()
+        tr.writeTag("title", True)
+        tr.writeTag("title", False)
+        tr.importTableCss()
+        tr.writeTag("head", False)
+        tr.writeTag("body", True)
+
+        tr.drawTable()
+
+        tr.writeTag("body", False)
+        tr.writeTag("html", False)
+
+    def drawCompareReport(self):
+        tr.writeTag("html", True)
+        tr.writeTag("head", True)
+        tr.writeCharset()
+        tr.writeTag("title", True)
+        tr.writeTag("title", False)
+        tr.importTableCss()
+        tr.writeTag("head", False)
+        tr.writeTag("body", True)
+
+        tr.drawCompareTable()
+
+        tr.writeTag("body", False)
+        tr.writeTag("html", False)
+        
+        
 if __name__ == "__main__":
     tr = HTML_Test_Report("test.html")
 
-    tr.writeTag("html", True)
-    tr.writeTag("head", True)
-    tr.writeCharset()
-    tr.writeTag("title", True)
-    tr.writeTag("title", False)
-
-    tr.importTableCss()
-
-    tr.writeTag("head", False)
-    tr.writeTag("body", True)
-
-    tr.drawTable()
-
-    tr.writeTag("body", False)
-    tr.writeTag("html", False)
+    tr.drawCompareReport()
 
     tr.trFinish()

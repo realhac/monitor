@@ -30,10 +30,12 @@ class Request_Response_Curl:
 
         crl.perform()
 
-        r = crl.fp.getvalue().decode('utf-8')
+        _code = crl.getinfo(crl.HTTP_CODE)
+        _context = crl.fp.getvalue().decode('utf-8')
+
         crl.fp.close()
 
-        return r
+        return (_code, _context)
 
     def postCookieResponse(self, cookies):
         crl = pycurl.Curl()
@@ -63,11 +65,13 @@ class Request_Response_Curl:
         crl.setopt(pycurl.COOKIEJAR, cookies)
 
         crl.perform()
-
-        r = crl.fp.getvalue().decode('utf-8')
+        
+        _code = crl.getinfo(crl.HTTP_CODE)
+        _context = crl.fp.getvalue().decode('utf-8')
+        
         crl.fp.close()
 
-        return r
+        return (_code, _context)
 
 if __name__ == "__main__":
     u = 'http://ware.m.jd.com/client.action?functionId=skuDyInfo&clientVersion=4.0.0&client=android&osVersion=4.0.3&screen=960*540&networkType=wifi&pin=ljzh347'
